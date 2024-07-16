@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello world !!</title>
+</head>
+<body style="text-align: center;margin-top: 100px;">
+    <h1 style="margin-bottom: 100px;">Hello world</h1>
+
+    <h2 id="message">Loading...</h2>
+
+    <script>
+        // Fetch the message from the API and display it
+        fetch('/api/message')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').textContent = data.message;
+            })
+            .catch(error => {
+                console.error('Error fetching the message:', error);
+                document.getElementById('message').textContent = 'Error loading message';
+            });
+    </script>
+
+</body>
+</html>
